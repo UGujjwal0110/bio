@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ujjwal Ghosh - Resume</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e7f0f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .cv-container {
+      background: #ffffff;
+      width: 210mm;
+      min-height: 297mm;
+      margin: auto;
+      padding: 25mm;
+      box-sizing: border-box;
+      border-radius: 12px;
+      box-shadow: 20px 20px 20px rgba(3, 230, 230, 0.1);
+    }
+
+    .header {
+      text-align: center;
+    }
+
+    .profile-pic-wrapper {
+      display: inline-block;
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin-bottom: 10px;
+    }
+
+    .profile-pic-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -6px;   /* Add extra space for border thickness */
+      left: -6px;
+      width: 140px;
+      height: 140px;
+      border-radius: 100%;
+      z-index: 1;
+      background: conic-gradient(
+        #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee, #ff0000
+      );
+      animation: rotateBorder 2.5s linear infinite, glowColor 3s linear infinite;
+      box-shadow: 0 0 40px 12px #ff0000, 0 0 20px 6px #fff;
+    }
+
+    @keyframes rotateBorder {
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes glowColor {
+      0%   { box-shadow: 0 0 20px 6px #ff5959, 0 0 20px 6px #fff; }
+      20%  { box-shadow: 0 0 20px 6px #ebb859, 0 0 20px 6px #fff; }
+      40%  { box-shadow: 0 0 20px 6px #ffff84, 0 0 20px 6px #fff; }
+      60%  { box-shadow: 0 0 20px 6px #90ff90, 0 0 20px 6px #fff; }
+      80%  { box-shadow: 0 0 20px 6px #7b7bff, 0 0 20px 6px #fff; }
+      100% { box-shadow: 0 0 20px 6px #bb6767, 0 0 20px 6px #fff; }
+    }
+    
+    .header img {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      border: 2px solid #fff; /* White border to separate from animated border */
+      background: #204240;
+      box-sizing: border-box;
+      /* Optional: subtle glow for the image itself */
+      box-shadow: 0 0 16px 2px #00ffe7;
+    }
+
+    .header h1 {
+      margin-top: 10px;
+      font-size: 2.5em;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow:
+        0 4px 0 #b2b2b2,
+        0 7px 0 #8c8c8c,
+        0 10px 9px rgba(0, 0, 0, 0.2);
+      animation: colorPopZoom 10s infinite alternate;
+      transition: transform 10s;
+    }
+
+    @keyframes colorPopZoom {
+      0% {
+        color: #ff0000;
+        transform: scale(0.20);
+      }
+      20% {
+        color: #ffa500;
+        transform: scale(0.40);
+      }
+      40% {
+        color: #008000;
+        transform: scale(0.60);
+      }
+      60% {
+        color: #0000ff;
+        transform: scale(0.80);
+      }
+      80% {
+        color: #4b0082;
+        transform: scale(1.00);
+      }
+      100% {
+        color: #ee82ee;
+        transform: scale(1.00);
+      }
+    }
+
+    .header h2 {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee, #ff0000);
+      
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 3s linear infinite;
+      margin-top: 0px;
+      font-size: 1.2em;
+      
+    }
+
+    @keyframes rainbowText {
+      0% {
+        background-position: 0%  50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    h2 {
+      color: #0c7439; 
+      background-color: #fab432;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+
+    .section {
+      margin-top: 15px;
+    }
+
+    .section p {
+      margin: 6px 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .label {
+      font-weight: bold;
+      font-size: 15PX;
+      font-style: initial;
+      text-transform: uppercase;
+      color: #000000;
+    }
+
+    .download-btn {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .download-btn button {
+      background: #2e8b57;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .download-btn button:hover {
+      background: #226d44;
+    }
+
+    @media print {
+      .download-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cv-container" id="cv">
+  <div class="header">
+    <h1>  </h1>
+    <div class="profile-pic-wrapper">
+      <img src="Picsart_ME.png" alt="Ujjwal Ghosh">
+    </div>
+    <h2></h2>
+    <h1>UJJWAL GHOSH</h1>
+    <p>📍Auria, Katowa-2, 713143 Purba Bardhaman</p>
+    <p>📞 9832052828 | 📧 ujjal65@gmail.com</p>
+  </div>
+
+  <div class="section">
+    <h2>Personal Information</h2>
+    <p><span class="label">Date of Birth :-</span> 01-12-2001</p>
+    <p><span class="label">Gender :-</span> Male</p>
+    <p><span class="label">Marital Status :-</span> Unmarried</p>
+  </div>
+  
+  <div class="section">
+    <h2>Objective</h2>
+    <p>Hello sir, I am Ujjwal Ghosh. I can do any job. It will be easy to understand or practice. I believe I can handle responsibilities and learn efficiently.</p>
+  </div>
+
+  <div class="section">
+    <h2>Education & Qualifications</h2>
+    <p><strong>2017 :-</strong> Madhyamik (Secondary Exam)</p>
+    <p><span class="label">School :-</span> Auria C C D Vidyaniketan, Auria</p>
+    <p><span class="label">Status :-</span> Passed</p>
+
+    <br>
+
+    <p><strong>2019 :-</strong> Higher Secondary Exam</p>
+    <p><span class="label">School :-</span> Auria C C D Vidyaniketan, Auria</p>
+    <p><span class="label">Status :-</span> Passed</p>
+  </div>
+
+  <div class="section">
+    <h2>Interests</h2>
+    <p>Coding in free time, Learning new technologies</p>
+  </div>
+</div>
+
+<div class="download-btn">
+  <button onclick="downloadPDF()">📄 Download PDF (A4)</button>
+</div>
+
+<script>
+  function downloadPDF() {
+    const element = document.getElementById("cv");
+    const opt = {
+      margin:       [0, 0, 0, 0], // no extra margin
+      filename:     'Ujjwal_Ghosh_CV.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  }
+
+  /*--typing effect*/
+  var typed = new Typed('.header h2', {
+    strings: ["Hello Sir, I am UG", "Welcome To My CV", "I AM LEARN FRONTED DEVLOPER"],
+    typeSpeed: 100,
+    backSpeed: 50,
+    backDelay: 3000,
+    loop: true,
+    showCursor: false // Hide the cursor
+  });
+</script>
+
+</body>
+</html>
